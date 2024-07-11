@@ -9,6 +9,7 @@
     "@material-ui/lab": "^4.0.0-alpha.61",
     "@material-ui/styles": "^4.11.5",
     "@mui/styles": "^5.14.18",
+    "@redux-devtools/extension": "^3.3.0",
     "@stripe/react-stripe-js": "^2.4.0",
     "@stripe/stripe-js": "^2.2.0",
     "@testing-library/jest-dom": "^5.17.0",
