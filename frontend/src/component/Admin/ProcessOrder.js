@@ -67,9 +67,12 @@ const ProcessOrder = ({ user }) => {
               className="confirmOrderPage"
               style={{
                 display:
-                  (user.role === "seller" &&
+                  (user &&
+                    user.role === "seller" &&
                     order.orderStatus !== "Processing") ||
-                  (user.role === "admin" && order.orderStatus !== "Shipped")
+                  (user &&
+                    user.role === "admin" &&
+                    order.orderStatus !== "Shipped")
                     ? "block"
                     : "grid",
               }}
@@ -166,16 +169,23 @@ const ProcessOrder = ({ user }) => {
                   </div>
                 </div>
               </div>
-              {(user.role === "seller" && order.orderStatus !== "Processing") ||
-              (user.role === "admin" && order.orderStatus !== "Shipped") ? (
+              {(user &&
+                user.role === "seller" &&
+                order.orderStatus !== "Processing") ||
+              (user &&
+                user.role === "admin" &&
+                order.orderStatus !== "Shipped") ? (
                 <div></div>
               ) : (
                 <div
                   style={{
                     display:
-                      (user.role === "seller" &&
+                      (user &&
+                        user.role === "seller" &&
                         order.orderStatus !== "Processing") ||
-                      (user.role === "admin" && order.orderStatus !== "Shipped")
+                      (user &&
+                        user.role === "admin" &&
+                        order.orderStatus !== "Shipped")
                         ? "block"
                         : "grid",
                   }}
@@ -190,7 +200,8 @@ const ProcessOrder = ({ user }) => {
                       <AccountTreeIcon />
                       <select onChange={(e) => setStatus(e.target.value)}>
                         <option value="">Choose Category</option>
-                        {user.role === "admin" &&
+                        {user &&
+                          user.role === "admin" &&
                           order.orderStatus === "Shipped" && (
                             <option value="Delivered">Delivered</option>
                           )}

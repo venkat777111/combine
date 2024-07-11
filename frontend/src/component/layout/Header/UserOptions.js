@@ -42,7 +42,7 @@ const UserOptions = ({ user }) => {
     });
   }
 
-  if (user.role === "seller") {
+  if (user && user.role === "seller") {
     options.unshift({
       icon: <DashboardIcon />,
       name: "Dashboard",

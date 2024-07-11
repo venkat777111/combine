@@ -18,14 +18,14 @@ const Sidebar = ({ user }) => {
       <Link to="/">
         <img src={logo} alt="Ecommerce" />
       </Link>
-      {user.role === "admin" && (
+      {user && user.role === "admin" && (
         <Link to="/admin/dashboard">
           <p>
             <DashboardIcon /> Dashboard
           </p>
         </Link>
       )}
-      {user.role === "seller" && (
+      {user && user.role === "seller" && (
         <Link to="/seller/dashboard">
           <p>
             <DashboardIcon /> Dashboard
@@ -38,22 +38,22 @@ const Sidebar = ({ user }) => {
           defaultExpandIcon={<ImportExportIcon />}
         >
           <TreeItem nodeId="1" label="Products">
-            {user.role === "admin" && (
+            {user && user.role === "admin" && (
               <Link to="/admin/products">
                 <TreeItem nodeId="2" label="All" icon={<PostAddIcon />} />
               </Link>
             )}
-            {user.role === "seller" && (
+            {user && user.role === "seller" && (
               <Link to="/seller/products">
                 <TreeItem nodeId="2" label="All" icon={<PostAddIcon />} />
               </Link>
             )}
-            {user.role === "admin" && (
+            {use && user.role === "admin" && (
               <Link to="/admin/product">
                 <TreeItem nodeId="3" label="Create" icon={<AddIcon />} />
               </Link>
             )}
-            {user.role === "seller" && (
+            {use && user.role === "seller" && (
               <Link to="/seller/product">
                 <TreeItem nodeId="3" label="Create" icon={<AddIcon />} />
               </Link>
@@ -61,7 +61,7 @@ const Sidebar = ({ user }) => {
           </TreeItem>
         </TreeView>
       </Link>
-      {user.role === "admin" && (
+      {user && user.role === "admin" && (
         <Link to="/admin/orders">
           <p>
             <ListAltIcon />
@@ -69,7 +69,7 @@ const Sidebar = ({ user }) => {
           </p>
         </Link>
       )}
-      {user.role === "seller" && (
+      {user && user.role === "seller" && (
         <Link to="/seller/orders">
           <p>
             <ListAltIcon />
@@ -77,14 +77,14 @@ const Sidebar = ({ user }) => {
           </p>
         </Link>
       )}
-      {user.role === "admin" && (
+      {user && user.role === "admin" && (
         <Link to="/admin/users">
           <p>
             <PeopleIcon /> Users
           </p>
         </Link>
       )}
-      {user.role === "admin" && (
+      {user && user.role === "admin" && (
         <Link to="/admin/reviews">
           <p>
             <RateReviewIcon />
