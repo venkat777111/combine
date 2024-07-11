@@ -1,0 +1,36 @@
+{
+  "name": "e-commerce",
+  "version": "1.0.0",
+  "description": "this is complete MERN Project",
+  "main": "backend/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js",
+    "server": "nodemon index.js --ignore client"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@material-ui/data-grid": "^4.0.0-alpha.37",
+    "@redux-devtools/extension": "^3.2.5",
+    "@zegocloud/zego-uikit-prebuilt": "^2.0.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "cloudinary": "^1.41.0",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-fileupload": "^1.4.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongodb": "^6.4.0",
+    "mongoose": "^6.9.3",
+    "nodemailer": "^6.9.1",
+    "nodemon": "^2.0.20",
+    "react-rating-stars-component": "^2.2.0",
+    "redux-devtools": "^3.7.0",
+    "stripe": "^14.5.0",
+    "twilio": "^4.19.3",
+    "validator": "^13.9.0"
+  }
+}

@@ -1,0 +1,56 @@
+.productsHeading {
+  margin: 2vmax auto;
+  width: 15vw;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.171);
+  padding: 2vmax;
+  color: rgba(0, 0, 0, 0.678);
+  font: 500 1.5vmax "Roboto";
+  text-align: center;
+}
+
+.container {
+  margin-top: 100px;
+  display: flex;
+  column-gap: 18px;
+  justify-content: center;
+  align-items: center;
+  /* border: 2px solid black; */
+}
+
+.expertCard {
+  /* border: 2px solid red; */
+  width: 200px;
+  height: 300px;
+  text-align: center;
+  text-decoration: none;
+  color: rgb(48, 48, 48);
+  margin: 1vmax;
+  transition: all 0.5s;
+  font: 300 0.9vmax "Roboto";
+}
+
+.expertCard > img {
+  /* border: 2px solid purple; */
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+}
+
+.expertCard:hover {
+  box-shadow: 0 0 5px rgba(15, 15, 15, 0.26);
+
+  transform: translateY(-1vmax);
+}
+
+.name,
+.specialization,
+.experience,
+.rating {
+  /* border: 2px solid red; */
+  padding: 1px;
+}
+
+.name {
+  font-weight: 600;
+  font-size: medium;
+}
