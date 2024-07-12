@@ -48,12 +48,12 @@ const Sidebar = ({ user }) => {
                 <TreeItem nodeId="2" label="All" icon={<PostAddIcon />} />
               </Link>
             )}
-            {use && user.role === "admin" && (
+            {user && user.role === "admin" && (
               <Link to="/admin/product">
                 <TreeItem nodeId="3" label="Create" icon={<AddIcon />} />
               </Link>
             )}
-            {use && user.role === "seller" && (
+            {user && user.role === "seller" && (
               <Link to="/seller/product">
                 <TreeItem nodeId="3" label="Create" icon={<AddIcon />} />
               </Link>
