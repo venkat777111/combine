@@ -28,7 +28,7 @@ const Home = ({ experts }) => {
         <Loader />
       ) : (
         <Fragment>
-          <MetaData title={"FARMOFLICK"} />
+          <MetaData title={"RAMUISM"} />
           <div className="banner">
             {/* <p>Welcom to FarmoFlick</p>
             <h1>FIND AMAZING PRODUCTS BELOW</h1> */}

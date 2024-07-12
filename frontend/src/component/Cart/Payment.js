@@ -21,7 +21,7 @@ import { createOrder, clearErrors } from "../../actions/orderAction";
 
 const Payment = () => {
   const dispatch = useDispatch();
-  const alert = useAlert;
+  const alert = useAlert();
   const stripe = useStripe();
   const elements = useElements();
   const navigate = useNavigate();
@@ -55,12 +55,13 @@ const Payment = () => {
           "Content-Type": "application/json",
         },
       };
-      const server = process.env.REACT_APP_SERVER_URL;
+      // const server = process.env.REACT_APP_SERVER_URL;
       const { data } = await axios.post(
-        `${server}/api/v1/payment/process`,
+        `/api/v1/payment/process`,
         paymentData,
         config
       );
+      console.log(data);
 
       const client_secret = data.client_secret;
 
@@ -82,6 +83,7 @@ const Payment = () => {
           },
         },
       });
+      console.log(result);
 
       if (result.error) {
         payBtn.current.disabled = false;
@@ -102,6 +104,7 @@ const Payment = () => {
         }
       }
     } catch (error) {
+      console.log(error.response);
       payBtn.current.disabled = false;
       alert.error(error.response.data.message);
     }

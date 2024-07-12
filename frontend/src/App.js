@@ -49,14 +49,18 @@ import SellerProcessOrder from "./component/Seller/SellerProcessOrder.js";
 import Room from "./component/Consultation/Room.js";
 import About from "./component/layout/About/About.js";
 import ScheduleMeet from "./component/Consultation/ScheduleMeet.js";
-
+import rgvImage from "./pics/rgv.jpg";
+import Nag from "./images/Nag.jpg";
+import Amala from "./images/Amala.jpg";
+import chakri from "./images/chakri.jpg";
+import Raghu from "./images/Raghu.jpg";
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
   const [stripeApiKey, setSetstripeApiKey] = useState("");
 
   async function getStripeApiKey() {
-    const server = process.env.REACT_APP_SERVER_URL;
-    const { data } = await axios.get(`${server}/api/v1/stripeapikey`);
+    // const server = process.env.REACT_APP_SERVER_URL;
+    const { data } = await axios.get(`/api/v1/stripeapikey`);
     setSetstripeApiKey(data.stripeApiKey);
   }
 
@@ -72,17 +76,17 @@ function App() {
 
   const experts = [
     {
-      image: "/Aman.jpg",
-      name: "Aman Kumar Verma",
-      specialization: "Floriculture Specialist",
+      image: `${rgvImage}`,
+      name: "Ram Gopal varma",
+      specialization: "Viticulture Specialist",
       experience: 7,
       rating: 4.5,
       room: 6789,
       email: "amancvn@gmail.com",
     },
     {
-      image: "/Nikhil.jpg",
-      name: "Nikhil Singh",
+      image: `${Nag}`,
+      name: "Nagarjuna ",
       specialization: "Horticulture Specialist",
       experience: 10,
       rating: 4.5,
@@ -90,8 +94,8 @@ function App() {
       email: "rsna25211@gmail.com",
     },
     {
-      image: "/Shuaib.jpg",
-      name: "Mohd Shuaib Siddiqui",
+      image: `${Amala}`,
+      name: "Amala",
       specialization: "Viticulture Specialist",
       experience: 8,
       rating: 4.5,
@@ -99,8 +103,8 @@ function App() {
       email: "shoebsiddiqui4947@gmail.com",
     },
     {
-      image: "/Chandan.jpg",
-      name: "Chandan Singh",
+      image: `${chakri}`,
+      name: "J.D.chakravarthy",
       specialization: "Pedologist",
       experience: 4,
       rating: 4.5,
@@ -108,8 +112,8 @@ function App() {
       email: "chandansingh639757@gmail.com",
     },
     {
-      image: "/Rohit.jpg",
-      name: "Rohit Gupta",
+      image: `${Raghu}`,
+      name: "Raghu varan",
       specialization: "Apiculture Specialist",
       experience: 5,
       rating: 4.5,

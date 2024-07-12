@@ -1,9 +1,11 @@
 import React from "react";
 import "./About.css";
 import { Button, Typography, Avatar } from "@material-ui/core";
+import Dbr from "../../../images/DB.jpg";
+
 const About = () => {
   const visitGithub = () => {
-    window.location = "https://github.com/shoebxsiddiqui/FarmoFlic";
+    window.location = "https://github.com/venkat777111";
   };
   return (
     <div className="aboutSection">
@@ -16,18 +18,14 @@ const About = () => {
           <div>
             <Avatar
               style={{ width: "10vmax", height: "10vmax", margin: "2vmax 0" }}
-              src={process.env.PUBLIC_URL + "/Shuaib.jpg"}
+              src={process.env.PUBLIC_URL + `${Dbr}`}
               alt="Founder"
             />
-            <Typography>Mohd Shuaib Siddiqui</Typography>
+            <Typography>VENKAT</Typography>
             <Button onClick={visitGithub} color="primary">
               Visit Github
             </Button>
-            <span>
-              This Final Year project serves as both a learning opportunity and
-              a platform for me to apply and enhance the skills I've developed,
-              aiming to integrate new knowledge into practical development
-            </span>
+            <span>Great Learning Experience with this kind of projects</span>
           </div>
           <div className="aboutSectionContainer2">
             <Typography component="h1">Our Services</Typography>

@@ -12,11 +12,7 @@ const ExpertCard = ({ expert, index }) => {
 
   return (
     <>
-      <Link
-        key={index}
-        className="expertCard"
-        to={`/consultation/${expert.room}`}
-      >
+      <Link key={index} className="expertCard" to={`/`}>
         <img src={process.env.PUBLIC_URL + `${expert.image}`} alt="Profile" />
         <div className="name">{expert.name}</div>
         <div className="specialization">{expert.specialization}</div>
