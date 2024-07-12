@@ -43,10 +43,10 @@ export const getProducts =
       dispatch({
         type: ALL_PRODUCT_REQUEST,
       });
-
-      let link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}`;
+      const server = process.env.REACT_APP_SERVER_URL;
+      let link = `${server}/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}`;
       if (category) {
-        link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}&category=${category}`;
+        link = `${server}/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}&category=${category}`;
       }
 
       const { data } = await axios.get(link);
@@ -67,8 +67,8 @@ export const getProducts =
 export const getAdminProduct = () => async (dispatch) => {
   try {
     dispatch({ type: ADMIN_PRODUCT_REQUEST });
-
-    const { data } = await axios.get("/api/v1/admin/products");
+    const server = process.env.REACT_APP_SERVER_URL;
+    const { data } = await axios.get(`${server}/api/v1/admin/products`);
 
     dispatch({
       type: ADMIN_PRODUCT_SUCCESS,
@@ -90,17 +90,17 @@ export const createProduct = (productData, user) => async (dispatch) => {
     const config = {
       headers: { "Content-Type": "multipart/form-data" },
     };
-
+    const server = process.env.REACT_APP_SERVER_URL;
     let data;
     if (user === "admin") {
       ({ data } = await axios.post(
-        `/api/v1/admin/product/new`,
+        `${server}/api/v1/admin/product/new`,
         productData,
         config
       ));
     } else {
       ({ data } = await axios.post(
-        `/api/v1/seller/product/new`,
+        `${server}/api/v1/seller/product/new`,
         productData,
         config
       ));
@@ -126,17 +126,17 @@ export const updateProduct = (id, productData, role) => async (dispatch) => {
     const config = {
       headers: { "Content-Type": "application/json" },
     };
-
+    const server = process.env.REACT_APP_SERVER_URL;
     let data;
     if (role === "admin") {
       ({ data } = await axios.put(
-        `/api/v1/admin/product/${id}`,
+        `${server}/api/v1/admin/product/${id}`,
         productData,
         config
       ));
     } else {
       ({ data } = await axios.put(
-        `/api/v1/seller/product/${id}`,
+        `${server}/api/v1/seller/product/${id}`,
         productData,
         config
       ));
@@ -158,12 +158,12 @@ export const updateProduct = (id, productData, role) => async (dispatch) => {
 export const deleteProduct = (id, role) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_PRODUCT_REQUEST });
-
+    const server = process.env.REACT_APP_SERVER_URL;
     let data;
     if (role === "admin") {
-      ({ data } = await axios.delete(`/api/v1/admin/product/${id}`));
+      ({ data } = await axios.delete(`${server}/api/v1/admin/product/${id}`));
     } else {
-      ({ data } = await axios.delete(`/api/v1/seller/product/${id}`));
+      ({ data } = await axios.delete(`${server}/api/v1/seller/product/${id}`));
     }
 
     dispatch({
@@ -184,8 +184,8 @@ export const getProductDetails = (id) => async (dispatch) => {
     dispatch({
       type: PRODUCT_DETAILS_REQUEST,
     });
-
-    const { data } = await axios.get(`/api/v1/product/${id}`);
+    const server = process.env.REACT_APP_SERVER_URL;
+    const { data } = await axios.get(`${server}/api/v1/product/${id}`);
 
     dispatch({
       type: PRODUCT_DETAILS_SUCCESS,
@@ -208,8 +208,12 @@ export const newReview = (reviewData) => async (dispatch) => {
     const config = {
       headers: { "Content-Type": "application/json" },
     };
-
-    const { data } = await axios.put(`/api/v1/review`, reviewData, config);
+    const server = process.env.REACT_APP_SERVER_URL;
+    const { data } = await axios.put(
+      `${server}/api/v1/review`,
+      reviewData,
+      config
+    );
 
     dispatch({
       type: NEW_REVIEW_SUCCESS,
@@ -227,8 +231,8 @@ export const newReview = (reviewData) => async (dispatch) => {
 export const getAllReviews = (id) => async (dispatch) => {
   try {
     dispatch({ type: ALL_REVIEW_REQUEST });
-
-    const { data } = await axios.get(`/api/v1/reviews?id=${id}`);
+    const server = process.env.REACT_APP_SERVER_URL;
+    const { data } = await axios.get(`${server}/api/v1/reviews?id=${id}`);
 
     dispatch({
       type: ALL_REVIEW_SUCCESS,
@@ -246,9 +250,9 @@ export const getAllReviews = (id) => async (dispatch) => {
 export const deleteReviews = (reviewId, productId) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_REVIEW_REQUEST });
-
+    const server = process.env.REACT_APP_SERVER_URL;
     const { data } = await axios.delete(
-      `/api/v1/reviews?id=${reviewId}&productId=${productId}`
+      `${server}/api/v1/reviews?id=${reviewId}&productId=${productId}`
     );
 
     dispatch({
@@ -267,8 +271,8 @@ export const deleteReviews = (reviewId, productId) => async (dispatch) => {
 export const getSellerProduct = (id) => async (dispatch) => {
   try {
     dispatch({ type: ADMIN_PRODUCT_REQUEST });
-
-    const { data } = await axios.get(`/api/v1/seller/products/${id}`);
+    const server = process.env.REACT_APP_SERVER_URL;
+    const { data } = await axios.get(`${server}/api/v1/seller/products/${id}`);
 
     dispatch({
       type: ADMIN_PRODUCT_SUCCESS,
