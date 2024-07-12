@@ -65,11 +65,11 @@ function App() {
   }
 
   useEffect(() => {
-    WebFont.load({
-      google: {
-        families: ["Roboto", "Droid Sans", "Chilanka"],
-      },
-    });
+    // WebFont.load({
+    //   google: {
+    //     families: ["Roboto", "Droid Sans", "Chilanka"],
+    //   },
+    // });
     store.dispatch(loadUser());
     getStripeApiKey();
   }, []);
