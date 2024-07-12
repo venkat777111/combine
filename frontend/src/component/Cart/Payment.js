@@ -55,9 +55,9 @@ const Payment = () => {
           "Content-Type": "application/json",
         },
       };
-      // const server = process.env.REACT_APP_SERVER_URL;
+      const server = process.env.REACT_APP_SERVER_URL;
       const { data } = await axios.post(
-        `/api/v1/payment/process`,
+        `${server}/api/v1/payment/process`,
         paymentData,
         config
       );

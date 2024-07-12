@@ -59,8 +59,8 @@ function App() {
   const [stripeApiKey, setSetstripeApiKey] = useState("");
 
   async function getStripeApiKey() {
-    // const server = process.env.REACT_APP_SERVER_URL;
-    const { data } = await axios.get(`/api/v1/stripeapikey`);
+    const server = process.env.REACT_APP_SERVER_URL;
+    const { data } = await axios.get(`${server}/api/v1/stripeapikey`);
     setSetstripeApiKey(data.stripeApiKey);
   }
 

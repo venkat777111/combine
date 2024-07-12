@@ -32,8 +32,12 @@ export const createOrder = (order) => async (dispatch) => {
         "Content-Type": "application/json",
       },
     };
-    // const server = process.env.REACT_APP_SERVER_URL;
-    const { data } = await axios.post(`/api/v1/order/new`, order, config);
+    const server = process.env.REACT_APP_SERVER_URL;
+    const { data } = await axios.post(
+      `${server}/api/v1/order/new`,
+      order,
+      config
+    );
 
     dispatch({ type: CREATE_ORDER_SUCCESS, payload: data });
   } catch (error) {
@@ -48,9 +52,9 @@ export const createOrder = (order) => async (dispatch) => {
 export const myOrders = () => async (dispatch) => {
   try {
     dispatch({ type: MY_ORDERS_REQUEST });
-    // const server = process.env.REACT_APP_SERVER_URL;
+    const server = process.env.REACT_APP_SERVER_URL;
 
-    const { data } = await axios.get(`/api/v1/orders/me`);
+    const { data } = await axios.get(`${server}/api/v1/orders/me`);
 
     dispatch({ type: MY_ORDERS_SUCCESS, payload: data.orders });
   } catch (error) {
@@ -67,12 +71,12 @@ export const getAllOrders =
   async (dispatch) => {
     try {
       dispatch({ type: ALL_ORDERS_REQUEST });
-      // const server = process.env.REACT_APP_SERVER_URL;
+      const server = process.env.REACT_APP_SERVER_URL;
       let data;
       if (role === "admin") {
-        ({ data } = await axios.get(`/api/v1/admin/orders`));
+        ({ data } = await axios.get(`${server}/api/v1/admin/orders`));
       } else {
-        ({ data } = await axios.get(`/api/v1/seller/orders`));
+        ({ data } = await axios.get(`${server}/api/v1/seller/orders`));
       }
       dispatch({ type: ALL_ORDERS_SUCCESS, payload: data.orders });
     } catch (error) {
@@ -95,11 +99,19 @@ export const updateOrder = (id, order, user) => async (dispatch) => {
     };
     console.log(user);
     let data;
-    // const server = process.env.REACT_APP_SERVER_URL;
+    const server = process.env.REACT_APP_SERVER_URL;
     if (user === "admin") {
-      ({ data } = await axios.put(`/api/v1/admin/order/${id}`, order, config));
+      ({ data } = await axios.put(
+        `${server}/api/v1/admin/order/${id}`,
+        order,
+        config
+      ));
     } else {
-      ({ data } = await axios.put(`/api/v1/seller/order/${id}`, order, config));
+      ({ data } = await axios.put(
+        `${server}/api/v1/seller/order/${id}`,
+        order,
+        config
+      ));
     }
 
     dispatch({ type: UPDATE_ORDER_SUCCESS, payload: data.success });
@@ -119,9 +131,9 @@ export const deleteOrder = (id, user) => async (dispatch) => {
     let data;
     const server = process.env.REACT_APP_SERVER_URL;
     if (user === "admin") {
-      ({ data } = await axios.delete(`/api/v1/admin/order/${id}`));
+      ({ data } = await axios.delete(`${server}/api/v1/admin/order/${id}`));
     } else {
-      ({ data } = await axios.delete(`/api/v1/seller/order/${id}`));
+      ({ data } = await axios.delete(`${server}/api/v1/seller/order/${id}`));
     }
 
     dispatch({ type: DELETE_ORDER_SUCCESS, payload: data.success });
@@ -137,9 +149,9 @@ export const deleteOrder = (id, user) => async (dispatch) => {
 export const getOrderDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: ORDER_DETAILS_REQUEST });
-    // const server = process.env.REACT_APP_SERVER_URL;
+    const server = process.env.REACT_APP_SERVER_URL;
 
-    const { data } = await axios.get(`/api/v1/order/${id}`);
+    const { data } = await axios.get(`${server}/api/v1/order/${id}`);
 
     dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data.order });
   } catch (error) {
@@ -154,9 +166,9 @@ export const getOrderDetails = (id) => async (dispatch) => {
 export const getSellerOrders = (id) => async (dispatch) => {
   try {
     dispatch({ type: ALL_ORDERS_REQUEST });
-    // const server = process.env.REACT_APP_SERVER_URL;
+    const server = process.env.REACT_APP_SERVER_URL;
 
-    const { data } = await axios.get(`/api/v1/seller/orders/${id}`);
+    const { data } = await axios.get(`${server}/api/v1/seller/orders/${id}`);
 
     dispatch({ type: ALL_ORDERS_SUCCESS, payload: data.orders });
   } catch (error) {
