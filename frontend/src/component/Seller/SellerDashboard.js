@@ -61,15 +61,21 @@ const Dashboard = () => {
       },
     ],
   };
+
+  const doughnutDatasets =
+    products.length > 0
+      ? [
+          {
+            backgroundColor: ["#00A684", "#680084"],
+            hoverBackgroundColor: ["#4B5000", "#35014F"],
+            data: [outOfStock, products.length - outOfStock],
+          },
+        ]
+      : [];
+
   const doughnutState = {
     labels: ["Out of Stock", "InStock"],
-    datasets: [
-      {
-        backgroundColor: ["#00A684", "#680084"],
-        hoverBackgroundColor: ["#4B5000", "#35014F"],
-        data: [outOfStock, products.length - outOfStock],
-      },
-    ],
+    datasets: doughnutDatasets,
   };
 
   return (

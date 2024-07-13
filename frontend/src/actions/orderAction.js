@@ -28,6 +28,7 @@ export const createOrder = (order) => async (dispatch) => {
     dispatch({ type: CREATE_ORDER_REQUEST });
 
     const config = {
+      withCredentials: true,
       headers: {
         "Content-Type": "application/json",
       },
@@ -54,7 +55,9 @@ export const myOrders = () => async (dispatch) => {
     dispatch({ type: MY_ORDERS_REQUEST });
     const server = process.env.REACT_APP_SERVER_URL;
 
-    const { data } = await axios.get(`${server}/api/v1/orders/me`);
+    const { data } = await axios.get(`${server}/api/v1/orders/me`, {
+      withCredentials: true,
+    });
 
     dispatch({ type: MY_ORDERS_SUCCESS, payload: data.orders });
   } catch (error) {
@@ -74,9 +77,13 @@ export const getAllOrders =
       const server = process.env.REACT_APP_SERVER_URL;
       let data;
       if (role === "admin") {
-        ({ data } = await axios.get(`${server}/api/v1/admin/orders`));
+        ({ data } = await axios.get(`${server}/api/v1/admin/orders`, {
+          withCredentials: true,
+        }));
       } else {
-        ({ data } = await axios.get(`${server}/api/v1/seller/orders`));
+        ({ data } = await axios.get(`${server}/api/v1/seller/orders`, {
+          withCredentials: true,
+        }));
       }
       dispatch({ type: ALL_ORDERS_SUCCESS, payload: data.orders });
     } catch (error) {
@@ -93,6 +100,7 @@ export const updateOrder = (id, order, user) => async (dispatch) => {
     dispatch({ type: UPDATE_ORDER_REQUEST });
 
     const config = {
+      withCredentials: true,
       headers: {
         "Content-Type": "application/json",
       },
@@ -131,9 +139,13 @@ export const deleteOrder = (id, user) => async (dispatch) => {
     let data;
     const server = process.env.REACT_APP_SERVER_URL;
     if (user === "admin") {
-      ({ data } = await axios.delete(`${server}/api/v1/admin/order/${id}`));
+      ({ data } = await axios.delete(`${server}/api/v1/admin/order/${id}`, {
+        withCredentials: true,
+      }));
     } else {
-      ({ data } = await axios.delete(`${server}/api/v1/seller/order/${id}`));
+      ({ data } = await axios.delete(`${server}/api/v1/seller/order/${id}`, {
+        withCredentials: true,
+      }));
     }
 
     dispatch({ type: DELETE_ORDER_SUCCESS, payload: data.success });
@@ -151,7 +163,9 @@ export const getOrderDetails = (id) => async (dispatch) => {
     dispatch({ type: ORDER_DETAILS_REQUEST });
     const server = process.env.REACT_APP_SERVER_URL;
 
-    const { data } = await axios.get(`${server}/api/v1/order/${id}`);
+    const { data } = await axios.get(`${server}/api/v1/order/${id}`, {
+      withCredentials: true,
+    });
 
     dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data.order });
   } catch (error) {
@@ -168,7 +182,9 @@ export const getSellerOrders = (id) => async (dispatch) => {
     dispatch({ type: ALL_ORDERS_REQUEST });
     const server = process.env.REACT_APP_SERVER_URL;
 
-    const { data } = await axios.get(`${server}/api/v1/seller/orders/${id}`);
+    const { data } = await axios.get(`${server}/api/v1/seller/orders/${id}`, {
+      withCredentials: true,
+    });
 
     dispatch({ type: ALL_ORDERS_SUCCESS, payload: data.orders });
   } catch (error) {

@@ -68,7 +68,9 @@ export const getAdminProduct = () => async (dispatch) => {
   try {
     dispatch({ type: ADMIN_PRODUCT_REQUEST });
     const server = process.env.REACT_APP_SERVER_URL;
-    const { data } = await axios.get(`${server}/api/v1/admin/products`);
+    const { data } = await axios.get(`${server}/api/v1/admin/products`, {
+      withCredentials: true,
+    });
 
     dispatch({
       type: ADMIN_PRODUCT_SUCCESS,
@@ -88,6 +90,7 @@ export const createProduct = (productData, user) => async (dispatch) => {
     dispatch({ type: NEW_PRODUCT_REQUEST });
 
     const config = {
+      withCredentials: true,
       headers: { "Content-Type": "multipart/form-data" },
     };
     const server = process.env.REACT_APP_SERVER_URL;
@@ -124,6 +127,7 @@ export const updateProduct = (id, productData, role) => async (dispatch) => {
     dispatch({ type: UPDATE_PRODUCT_REQUEST });
 
     const config = {
+      withCredentials: true,
       headers: { "Content-Type": "application/json" },
     };
     const server = process.env.REACT_APP_SERVER_URL;
@@ -161,9 +165,13 @@ export const deleteProduct = (id, role) => async (dispatch) => {
     const server = process.env.REACT_APP_SERVER_URL;
     let data;
     if (role === "admin") {
-      ({ data } = await axios.delete(`${server}/api/v1/admin/product/${id}`));
+      ({ data } = await axios.delete(`${server}/api/v1/admin/product/${id}`, {
+        withCredentials: true,
+      }));
     } else {
-      ({ data } = await axios.delete(`${server}/api/v1/seller/product/${id}`));
+      ({ data } = await axios.delete(`${server}/api/v1/seller/product/${id}`, {
+        withCredentials: true,
+      }));
     }
 
     dispatch({
@@ -185,7 +193,9 @@ export const getProductDetails = (id) => async (dispatch) => {
       type: PRODUCT_DETAILS_REQUEST,
     });
     const server = process.env.REACT_APP_SERVER_URL;
-    const { data } = await axios.get(`${server}/api/v1/product/${id}`);
+    const { data } = await axios.get(`${server}/api/v1/product/${id}`, {
+      withCredentials: true,
+    });
 
     dispatch({
       type: PRODUCT_DETAILS_SUCCESS,
@@ -206,6 +216,7 @@ export const newReview = (reviewData) => async (dispatch) => {
     dispatch({ type: NEW_REVIEW_REQUEST });
 
     const config = {
+      withCredentials: true,
       headers: { "Content-Type": "application/json" },
     };
     const server = process.env.REACT_APP_SERVER_URL;
@@ -232,7 +243,9 @@ export const getAllReviews = (id) => async (dispatch) => {
   try {
     dispatch({ type: ALL_REVIEW_REQUEST });
     const server = process.env.REACT_APP_SERVER_URL;
-    const { data } = await axios.get(`${server}/api/v1/reviews?id=${id}`);
+    const { data } = await axios.get(`${server}/api/v1/reviews?id=${id}`, {
+      withCredentials: true,
+    });
 
     dispatch({
       type: ALL_REVIEW_SUCCESS,
@@ -272,7 +285,9 @@ export const getSellerProduct = (id) => async (dispatch) => {
   try {
     dispatch({ type: ADMIN_PRODUCT_REQUEST });
     const server = process.env.REACT_APP_SERVER_URL;
-    const { data } = await axios.get(`${server}/api/v1/seller/products/${id}`);
+    const { data } = await axios.get(`${server}/api/v1/seller/products/${id}`, {
+      withCredentials: true,
+    });
 
     dispatch({
       type: ADMIN_PRODUCT_SUCCESS,
