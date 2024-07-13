@@ -44,7 +44,6 @@ export const login = (email, password) => async (dispatch) => {
     dispatch({ type: LOGIN_REQUEST });
 
     const config = {
-      withCredentials: true,
       headers: { "Content-Type": "application/json" },
     };
     const server = process.env.REACT_APP_SERVER_URL;
