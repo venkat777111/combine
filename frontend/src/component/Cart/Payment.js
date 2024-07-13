@@ -106,7 +106,6 @@ const Payment = () => {
         }
       }
     } catch (error) {
-      console.log(error.response);
       payBtn.current.disabled = false;
       alert.error(error.response.data.message);
     }
