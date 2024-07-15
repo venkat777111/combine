@@ -44,12 +44,11 @@ export const login = (email, password) => async (dispatch) => {
     dispatch({ type: LOGIN_REQUEST });
 
     const config = {
-      withCredentials: true,
       headers: { "Content-Type": "application/json" },
     };
     // const server = process.env.REACT_APP_SERVER_URL;
     const { data } = await axios.post(
-      `https://new-backend-41vh.onrender.com/api/v1/login`,
+      `/api/v1/login`,
       { email, password },
       config
     );
