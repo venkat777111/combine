@@ -67,7 +67,6 @@ export const register =
       dispatch({ type: REGISTER_USER_REQUEST });
 
       const config = {
-        withCredentials: true,
         headers: { "Content-Type": "multipart/form-data" },
       };
       // const server = process.env.REACT_APP_SERVER_URL;
