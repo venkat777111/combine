@@ -55,9 +55,7 @@ export const myOrders = () => async (dispatch) => {
     dispatch({ type: MY_ORDERS_REQUEST });
     const server = process.env.REACT_APP_SERVER_URL;
 
-    const { data } = await axios.get(`${server}/api/v1/orders/me`, {
-      withCredentials: true,
-    });
+    const { data } = await axios.get(`${server}/api/v1/orders/me`);
 
     dispatch({ type: MY_ORDERS_SUCCESS, payload: data.orders });
   } catch (error) {
