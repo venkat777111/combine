@@ -48,7 +48,7 @@ export const login = (email, password) => async (dispatch) => {
     };
     // const server = process.env.REACT_APP_SERVER_URL;
     const { data } = await axios.post(
-      `/api/v1/login`,
+      `https://new-backend-41vh.onrender.com/api/v1/login`,
       { email, password },
       config
     );
