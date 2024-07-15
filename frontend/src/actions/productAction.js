@@ -202,10 +202,7 @@ export const getProductDetails = (id) => async (dispatch) => {
     });
     // const server = process.env.REACT_APP_SERVER_URL;
     const { data } = await axios.get(
-      `https://new-backend-41vh.onrender.com/api/v1/product/${id}`,
-      {
-        withCredentials: true,
-      }
+      `https://new-backend-41vh.onrender.com/api/v1/product/${id}`
     );
 
     dispatch({
