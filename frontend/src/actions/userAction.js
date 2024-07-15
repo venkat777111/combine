@@ -46,9 +46,9 @@ export const login = (email, password) => async (dispatch) => {
     const config = {
       headers: { "Content-Type": "application/json" },
     };
-    const server = process.env.REACT_APP_SERVER_URL;
+    // const server = process.env.REACT_APP_SERVER_URL;
     const { data } = await axios.post(
-      `${server}/api/v1/login`,
+      `/api/v1/login`,
       { email, password },
       config
     );
@@ -69,9 +69,9 @@ export const register =
       const config = {
         headers: { "Content-Type": "multipart/form-data" },
       };
-      const server = process.env.REACT_APP_SERVER_URL;
+      // const server = process.env.REACT_APP_SERVER_URL;
       const { data } = await axios.post(
-        `${server}/api/v1/register`,
+        `/api/v1/register`,
         { name, email, password, role, avatar, phone_no },
         config
       );
@@ -89,8 +89,8 @@ export const register =
 export const loadUser = () => async (dispatch) => {
   try {
     dispatch({ type: LOAD_USER_REQUEST });
-    const server = process.env.REACT_APP_SERVER_URL;
-    const { data } = await axios.get(`${server}/api/v1/me`, {
+    // const server = process.env.REACT_APP_SERVER_URL;
+    const { data } = await axios.get(`/api/v1/me`, {
       withCredentials: true,
     });
     console.log(data);
@@ -104,8 +104,10 @@ export const loadUser = () => async (dispatch) => {
 //Logout User
 export const logout = () => async (dispatch) => {
   try {
-    const server = process.env.REACT_APP_SERVER_URL;
-    await axios.get(`${server}/api/v1/logout`, { withCredentials: true });
+    // const server = process.env.REACT_APP_SERVER_URL;
+    await axios.get(`/api/v1/logout`, {
+      withCredentials: true,
+    });
 
     dispatch({ type: LOGOUT_SUCCESS });
   } catch (error) {
@@ -122,13 +124,9 @@ export const updateProfile = (userData) => async (dispatch) => {
       withCredentials: true,
       headers: { "Content-Type": "multipart/form-data" },
     };
-    const server = process.env.REACT_APP_SERVER_URL;
+    // const server = process.env.REACT_APP_SERVER_URL;
 
-    const { data } = await axios.put(
-      `${server}/api/v1/me/update`,
-      userData,
-      config
-    );
+    const { data } = await axios.put(`/api/v1/me/update`, userData, config);
 
     dispatch({ type: UPDATE_PROFILE_SUCCESS, payload: data.success });
   } catch (error) {
@@ -148,9 +146,9 @@ export const updatePassword = (passwords) => async (dispatch) => {
       withCredentials: true,
       headers: { "Content-Type": "application/json" },
     };
-    const server = process.env.REACT_APP_SERVER_URL;
+    // const server = process.env.REACT_APP_SERVER_URL;
     const { data } = await axios.put(
-      `${server}/api/v1/password/update`,
+      `/api/v1/password/update`,
       passwords,
       config
     );
@@ -173,9 +171,9 @@ export const forgotPassword = (email) => async (dispatch) => {
       withCredentials: true,
       headers: { "Content-Type": "application/json" },
     };
-    const server = process.env.REACT_APP_SERVER_URL;
+    // const server = process.env.REACT_APP_SERVER_URL;
     const { data } = await axios.post(
-      `${server}/api/v1/password/forgot`,
+      `/api/v1/password/forgot`,
       { email },
       config
     );
@@ -199,9 +197,9 @@ export const resetPassword =
         withCredentials: true,
         headers: { "Content-Type": "application/json" },
       };
-      const server = process.env.REACT_APP_SERVER_URL;
+      // const server = process.env.REACT_APP_SERVER_URL;
       const { data } = await axios.put(
-        `${server}/api/v1/password/reset/${token}`,
+        `/api/v1/password/reset/${token}`,
         { password, confirmPassword },
         config
       );
@@ -219,8 +217,8 @@ export const resetPassword =
 export const getAllUsers = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_USERS_REQUEST });
-    const server = process.env.REACT_APP_SERVER_URL;
-    const { data } = await axios.get(`${server}/api/v1/admin/users`, {
+    // const server = process.env.REACT_APP_SERVER_URL;
+    const { data } = await axios.get(`/api/v1/admin/users`, {
       withCredentials: true,
     });
 
@@ -234,8 +232,8 @@ export const getAllUsers = () => async (dispatch) => {
 export const getUserDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: USER_DETAILS_REQUEST });
-    const server = process.env.REACT_APP_SERVER_URL;
-    const { data } = await axios.get(`${server}/api/v1/admin/user/${id}`, {
+    // const server = process.env.REACT_APP_SERVER_URL;
+    const { data } = await axios.get(`/api/v1/admin/user/${id}`, {
       withCredentials: true,
     });
 
@@ -254,9 +252,9 @@ export const updateUser = (id, userData) => async (dispatch) => {
       withCredentials: true,
       headers: { "Content-Type": "application/json" },
     };
-    const server = process.env.REACT_APP_SERVER_URL;
+    // const server = process.env.REACT_APP_SERVER_URL;
     const { data } = await axios.put(
-      `${server}/api/v1/admin/user/${id}`,
+      `/api/v1/admin/user/${id}`,
       userData,
       config
     );
@@ -274,8 +272,8 @@ export const updateUser = (id, userData) => async (dispatch) => {
 export const deleteUser = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_USER_REQUEST });
-    const server = process.env.REACT_APP_SERVER_URL;
-    const { data } = await axios.delete(`${server}/api/v1/admin/user/${id}`, {
+    // const server = process.env.REACT_APP_SERVER_URL;
+    const { data } = await axios.delete(`/api/v1/admin/user/${id}`, {
       withCredentials: true,
     });
 
@@ -291,9 +289,9 @@ export const deleteUser = (id) => async (dispatch) => {
 export const schedule = ({ date, time, desc, email, room }) => {
   return async (dispatch) => {
     try {
-      const server = process.env.REACT_APP_SERVER_URL;
+      // const server = process.env.REACT_APP_SERVER_URL;
       const { data } = await axios.post(
-        `${server}/api/v1/consultation/schedule`,
+        `/api/v1/consultation/schedule`,
         { withCredentials: true },
         {
           date,

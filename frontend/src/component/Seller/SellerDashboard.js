@@ -61,6 +61,7 @@ const Dashboard = () => {
       },
     ],
   };
+
   const doughnutState = {
     labels: ["Out of Stock", "InStock"],
     datasets: [

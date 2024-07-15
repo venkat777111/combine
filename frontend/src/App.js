@@ -54,13 +54,14 @@ import Nag from "./images/Nag.jpg";
 import Amala from "./images/Amala.jpg";
 import chakri from "./images/chakri.jpg";
 import Raghu from "./images/Raghu.jpg";
+
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
   const [stripeApiKey, setSetstripeApiKey] = useState("");
 
   async function getStripeApiKey() {
-    const server = process.env.REACT_APP_SERVER_URL;
-    const { data } = await axios.get(`${server}/api/v1/stripeapikey`);
+    // const server = process.env.REACT_APP_SERVER_URL;
+    const { data } = await axios.get(`/api/v1/stripeapikey`);
     setSetstripeApiKey(data.stripeApiKey);
   }
 
