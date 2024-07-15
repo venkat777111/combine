@@ -105,7 +105,7 @@ export const createProduct = (productData, user) => async (dispatch) => {
       ));
     } else {
       ({ data } = await axios.post(
-        `/api/v1/seller/product/new`,
+        `https://new-backend-41vh.onrender.com/api/v1/seller/product/new`,
         productData,
         config
       ));
