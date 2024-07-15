@@ -44,9 +44,9 @@ export const getProducts =
         type: ALL_PRODUCT_REQUEST,
       });
       // const server = process.env.REACT_APP_SERVER_URL;
-      let link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}`;
+      let link = `https://new-backend-41vh.onrender.com/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}`;
       if (category) {
-        link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}&category=${category}`;
+        link = `https://new-backend-41vh.onrender.com/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}&category=${category}`;
       }
 
       const { data } = await axios.get(link);
@@ -68,9 +68,12 @@ export const getAdminProduct = () => async (dispatch) => {
   try {
     dispatch({ type: ADMIN_PRODUCT_REQUEST });
     // const server = process.env.REACT_APP_SERVER_URL;
-    const { data } = await axios.get(`/api/v1/admin/products`, {
-      withCredentials: true,
-    });
+    const { data } = await axios.get(
+      `https://new-backend-41vh.onrender.com/api/v1/admin/products`,
+      {
+        withCredentials: true,
+      }
+    );
 
     dispatch({
       type: ADMIN_PRODUCT_SUCCESS,
@@ -97,13 +100,13 @@ export const createProduct = (productData, user) => async (dispatch) => {
     let data;
     if (user === "admin") {
       ({ data } = await axios.post(
-        `/api/v1/admin/product/new`,
+        `https://new-backend-41vh.onrender.com/api/v1/admin/product/new`,
         productData,
         config
       ));
     } else {
       ({ data } = await axios.post(
-        `/api/v1/seller/product/new`,
+        `https://new-backend-41vh.onrender.com/api/v1/seller/product/new`,
         productData,
         config
       ));
@@ -134,13 +137,13 @@ export const updateProduct = (id, productData, role) => async (dispatch) => {
     let data;
     if (role === "admin") {
       ({ data } = await axios.put(
-        `/api/v1/admin/product/${id}`,
+        `https://new-backend-41vh.onrender.com/api/v1/admin/product/${id}`,
         productData,
         config
       ));
     } else {
       ({ data } = await axios.put(
-        `/api/v1/seller/product/${id}`,
+        `https://new-backend-41vh.onrender.com/api/v1/seller/product/${id}`,
         productData,
         config
       ));
@@ -165,13 +168,19 @@ export const deleteProduct = (id, role) => async (dispatch) => {
     // const server = process.env.REACT_APP_SERVER_URL;
     let data;
     if (role === "admin") {
-      ({ data } = await axios.delete(`/api/v1/admin/product/${id}`, {
-        withCredentials: true,
-      }));
+      ({ data } = await axios.delete(
+        `https://new-backend-41vh.onrender.com/api/v1/admin/product/${id}`,
+        {
+          withCredentials: true,
+        }
+      ));
     } else {
-      ({ data } = await axios.delete(`/api/v1/seller/product/${id}`, {
-        withCredentials: true,
-      }));
+      ({ data } = await axios.delete(
+        `https://new-backend-41vh.onrender.com/api/v1/seller/product/${id}`,
+        {
+          withCredentials: true,
+        }
+      ));
     }
 
     dispatch({
@@ -193,9 +202,12 @@ export const getProductDetails = (id) => async (dispatch) => {
       type: PRODUCT_DETAILS_REQUEST,
     });
     // const server = process.env.REACT_APP_SERVER_URL;
-    const { data } = await axios.get(`/api/v1/product/${id}`, {
-      withCredentials: true,
-    });
+    const { data } = await axios.get(
+      `https://new-backend-41vh.onrender.com/api/v1/product/${id}`,
+      {
+        withCredentials: true,
+      }
+    );
 
     dispatch({
       type: PRODUCT_DETAILS_SUCCESS,
@@ -220,7 +232,11 @@ export const newReview = (reviewData) => async (dispatch) => {
       headers: { "Content-Type": "application/json" },
     };
     // const server = process.env.REACT_APP_SERVER_URL;
-    const { data } = await axios.put(`/api/v1/review`, reviewData, config);
+    const { data } = await axios.put(
+      `https://new-backend-41vh.onrender.com/api/v1/review`,
+      reviewData,
+      config
+    );
 
     dispatch({
       type: NEW_REVIEW_SUCCESS,
@@ -239,9 +255,12 @@ export const getAllReviews = (id) => async (dispatch) => {
   try {
     dispatch({ type: ALL_REVIEW_REQUEST });
     const server = process.env.REACT_APP_SERVER_URL;
-    const { data } = await axios.get(`/api/v1/reviews?id=${id}`, {
-      withCredentials: true,
-    });
+    const { data } = await axios.get(
+      `https://new-backend-41vh.onrender.com/api/v1/reviews?id=${id}`,
+      {
+        withCredentials: true,
+      }
+    );
 
     dispatch({
       type: ALL_REVIEW_SUCCESS,
@@ -261,7 +280,8 @@ export const deleteReviews = (reviewId, productId) => async (dispatch) => {
     dispatch({ type: DELETE_REVIEW_REQUEST });
     // const server = process.env.REACT_APP_SERVER_URL;
     const { data } = await axios.delete(
-      `/api/v1/reviews?id=${reviewId}&productId=${productId}`
+      `https://new-backend-41vh.onrender.com/api/v1/reviews?id=${reviewId}&productId=${productId}`,
+      { withCredentials: true }
     );
 
     dispatch({
@@ -281,9 +301,12 @@ export const getSellerProduct = (id) => async (dispatch) => {
   try {
     dispatch({ type: ADMIN_PRODUCT_REQUEST });
     // const server = process.env.REACT_APP_SERVER_URL;
-    const { data } = await axios.get(`/api/v1/seller/products/${id}`, {
-      withCredentials: true,
-    });
+    const { data } = await axios.get(
+      `https://new-backend-41vh.onrender.com/api/v1/seller/products/${id}`,
+      {
+        withCredentials: true,
+      }
+    );
 
     dispatch({
       type: ADMIN_PRODUCT_SUCCESS,

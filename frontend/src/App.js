@@ -46,9 +46,9 @@ import NewSellerProduct from "./component/Seller/NewSellerProduct.js";
 import SellerUpdateProduct from "./component/Seller/SellerUpdateProduct.js";
 import SellerOrderList from "./component/Seller/SellerOrderList.js";
 import SellerProcessOrder from "./component/Seller/SellerProcessOrder.js";
-import Room from "./component/Consultation/Room.js";
+
 import About from "./component/layout/About/About.js";
-import ScheduleMeet from "./component/Consultation/ScheduleMeet.js";
+
 import rgvImage from "./pics/rgv.jpg";
 import Nag from "./images/Nag.jpg";
 import Amala from "./images/Amala.jpg";
@@ -60,8 +60,10 @@ function App() {
   const [stripeApiKey, setSetstripeApiKey] = useState("");
 
   async function getStripeApiKey() {
-    // const server = process.env.REACT_APP_SERVER_URL;
-    const { data } = await axios.get(`/api/v1/stripeapikey`);
+    const { data } = await axios.get(
+      `https://new-backend-41vh.onrender.com/api/v1/stripeapikey`,
+      { withCredentials: true }
+    );
     setSetstripeApiKey(data.stripeApiKey);
   }
 
@@ -134,7 +136,7 @@ function App() {
           path="/consultation"
           element={<Consultation experts={experts} />}
         />
-        <Route exact path="/room/:roomId" element={<Room />} />
+
         <Route exact path="/product/:id" element={<ProductDetails />} />
         <Route exact path="/products" element={<Products />} />
         <Route path="/products/:keyword" element={<Products />} />
@@ -159,15 +161,7 @@ function App() {
             </AdminRoute>
           }
         />
-        <Route
-          exact
-          path="/consultation/:room"
-          element={
-            <AdminRoute>
-              <ScheduleMeet experts={experts} />
-            </AdminRoute>
-          }
-        />
+
         <Route
           exact
           path="/me/update"

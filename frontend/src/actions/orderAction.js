@@ -34,7 +34,11 @@ export const createOrder = (order) => async (dispatch) => {
       },
     };
     // const server = process.env.REACT_APP_SERVER_URL;
-    const { data } = await axios.post(`/api/v1/order/new`, order, config);
+    const { data } = await axios.post(
+      `https://new-backend-41vh.onrender.com/api/v1/order/new`,
+      order,
+      config
+    );
 
     dispatch({ type: CREATE_ORDER_SUCCESS, payload: data });
   } catch (error) {
@@ -51,7 +55,10 @@ export const myOrders = () => async (dispatch) => {
     dispatch({ type: MY_ORDERS_REQUEST });
     // const server = process.env.REACT_APP_SERVER_URL;
 
-    const { data } = await axios.get(`/api/v1/orders/me`);
+    const { data } = await axios.get(
+      `https://new-backend-41vh.onrender.com/api/v1/orders/me`,
+      { withCredentials: true }
+    );
 
     dispatch({ type: MY_ORDERS_SUCCESS, payload: data.orders });
   } catch (error) {
@@ -71,13 +78,19 @@ export const getAllOrders =
       // const server = process.env.REACT_APP_SERVER_URL;
       let data;
       if (role === "admin") {
-        ({ data } = await axios.get(`/api/v1/admin/orders`, {
-          withCredentials: true,
-        }));
+        ({ data } = await axios.get(
+          `https://new-backend-41vh.onrender.com/api/v1/admin/orders`,
+          {
+            withCredentials: true,
+          }
+        ));
       } else {
-        ({ data } = await axios.get(`/api/v1/seller/orders`, {
-          withCredentials: true,
-        }));
+        ({ data } = await axios.get(
+          `https://new-backend-41vh.onrender.com/api/v1/seller/orders`,
+          {
+            withCredentials: true,
+          }
+        ));
       }
       dispatch({ type: ALL_ORDERS_SUCCESS, payload: data.orders });
     } catch (error) {
@@ -103,9 +116,17 @@ export const updateOrder = (id, order, user) => async (dispatch) => {
     let data;
     // const server = process.env.REACT_APP_SERVER_URL;
     if (user === "admin") {
-      ({ data } = await axios.put(`/api/v1/admin/order/${id}`, order, config));
+      ({ data } = await axios.put(
+        `https://new-backend-41vh.onrender.com/api/v1/admin/order/${id}`,
+        order,
+        config
+      ));
     } else {
-      ({ data } = await axios.put(`/api/v1/seller/order/${id}`, order, config));
+      ({ data } = await axios.put(
+        `https://new-backend-41vh.onrender.com/api/v1/seller/order/${id}`,
+        order,
+        config
+      ));
     }
 
     dispatch({ type: UPDATE_ORDER_SUCCESS, payload: data.success });
@@ -125,13 +146,19 @@ export const deleteOrder = (id, user) => async (dispatch) => {
     let data;
     // const server = process.env.REACT_APP_SERVER_URL;
     if (user === "admin") {
-      ({ data } = await axios.delete(`/api/v1/admin/order/${id}`, {
-        withCredentials: true,
-      }));
+      ({ data } = await axios.delete(
+        `https://new-backend-41vh.onrender.com/api/v1/admin/order/${id}`,
+        {
+          withCredentials: true,
+        }
+      ));
     } else {
-      ({ data } = await axios.delete(`/api/v1/seller/order/${id}`, {
-        withCredentials: true,
-      }));
+      ({ data } = await axios.delete(
+        `https://new-backend-41vh.onrender.com/api/v1/seller/order/${id}`,
+        {
+          withCredentials: true,
+        }
+      ));
     }
 
     dispatch({ type: DELETE_ORDER_SUCCESS, payload: data.success });
@@ -149,9 +176,12 @@ export const getOrderDetails = (id) => async (dispatch) => {
     dispatch({ type: ORDER_DETAILS_REQUEST });
     // const server = process.env.REACT_APP_SERVER_URL;
 
-    const { data } = await axios.get(`/api/v1/order/${id}`, {
-      withCredentials: true,
-    });
+    const { data } = await axios.get(
+      `https://new-backend-41vh.onrender.com/api/v1/order/${id}`,
+      {
+        withCredentials: true,
+      }
+    );
 
     dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data.order });
   } catch (error) {
@@ -168,9 +198,12 @@ export const getSellerOrders = (id) => async (dispatch) => {
     dispatch({ type: ALL_ORDERS_REQUEST });
     // const server = process.env.REACT_APP_SERVER_URL;
 
-    const { data } = await axios.get(`/api/v1/seller/orders/${id}`, {
-      withCredentials: true,
-    });
+    const { data } = await axios.get(
+      `https://new-backend-41vh.onrender.com/api/v1/seller/orders/${id}`,
+      {
+        withCredentials: true,
+      }
+    );
 
     dispatch({ type: ALL_ORDERS_SUCCESS, payload: data.orders });
   } catch (error) {

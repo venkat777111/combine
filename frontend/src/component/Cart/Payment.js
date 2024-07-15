@@ -58,7 +58,7 @@ const Payment = () => {
       };
       // const server = process.env.REACT_APP_SERVER_URL;
       const { data } = await axios.post(
-        `/api/v1/payment/process`,
+        `https://new-backend-41vh.onrender.com/api/v1/payment/process`,
 
         paymentData,
         config
