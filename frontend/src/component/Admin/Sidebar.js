@@ -61,22 +61,22 @@ const Sidebar = ({ user }) => {
           </TreeItem>
         </TreeView>
       </Link>
-      {user && user.role === "admin" && (
+      {/* {user && user.role === "admin" && (
         <Link to="/admin/orders">
           <p>
             <ListAltIcon />
             Orders
           </p>
         </Link>
-      )}
-      {user && user.role === "seller" && (
+      )} */}
+      {/* {user && user.role === "seller" && (
         <Link to="/seller/orders">
           <p>
             <ListAltIcon />
             Orders
           </p>
         </Link>
-      )}
+      )} */}
       {user && user.role === "admin" && (
         <Link to="/admin/users">
           <p>
