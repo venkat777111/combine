@@ -61,8 +61,7 @@ function App() {
 
   async function getStripeApiKey() {
     const { data } = await axios.get(
-      `https://new-backend-41vh.onrender.com/api/v1/stripeapikey`,
-      { withCredentials: true }
+      `https://new-backend-41vh.onrender.com/api/v1/stripeapikey`
     );
     setSetstripeApiKey(data.stripeApiKey);
   }
