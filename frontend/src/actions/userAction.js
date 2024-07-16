@@ -171,7 +171,6 @@ export const forgotPassword = (email) => async (dispatch) => {
     dispatch({ type: FORGOT_PASSWORD_REQUEST });
 
     const config = {
-      withCredentials: true,
       headers: { "Content-Type": "application/json" },
     };
     // const server = process.env.REACT_APP_SERVER_URL;
