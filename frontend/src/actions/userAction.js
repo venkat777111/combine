@@ -106,9 +106,7 @@ export const loadUser = () => async (dispatch) => {
 export const logout = () => async (dispatch) => {
   try {
     // const server = process.env.REACT_APP_SERVER_URL;
-    await axios.get(`https://new-backend-41vh.onrender.com/api/v1/logout`, {
-      withCredentials: true,
-    });
+    await axios.get(`https://new-backend-41vh.onrender.com/api/v1/logout`);
 
     dispatch({ type: LOGOUT_SUCCESS });
   } catch (error) {
