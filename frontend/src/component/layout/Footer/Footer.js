@@ -16,7 +16,7 @@ const Footer = () => {
         <h1>RAMUISM.</h1>
         <p>High Quality is our first Priority</p>
 
-        <p>Copyrights 2023 &copy; MeMdShuaib</p>
+        <p>Copyrights 2024 &copy; VenkatVegi</p>
       </div>
       <div className="rightFooter">
         <h4>Follow Us</h4>
